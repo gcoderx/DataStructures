@@ -1,28 +1,30 @@
 #include<stdio.h>
 
-int swap(int *a, int *b){
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+int main(){
+   int i, j, count, temp, number[25];
 
-void selectionSort(int arr[], int n){
-    for(int i = 0; i < n - 1; i++){
-        int min = i;
-        for(int j = i + 1; j < n; j++){
-            if(arr[j] < arr[min])
-            min = j;
-        }
-        swap(&arr[min], &arr[i]);
-    }
-}
+   printf("How many numbers u are going to enter?: ");
+   scanf("%d",&count);
 
-int main(int argc, char const *argv[])
-{
-int arr[10] = {1,3,8,9,0,2,4,6,7,5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    selectionSort(arr, 10);
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
-    return 0;    
+   printf("Enter %d elements: ", count);
+   // Loop to get the elements stored in array
+   for(i=0;i<count;i++)
+      scanf("%d",&number[i]);
+ 
+   // Logic of selection sort algorithm
+   for(i=0;i<count;i++){
+      for(j=i+1;j<count;j++){
+         if(number[i]>number[j]){
+            temp=number[i];
+            number[i]=number[j];
+            number[j]=temp;
+         }
+      }
+   }
+
+   printf("Sorted elements: ");
+   for(i=0;i<count;i++)
+      printf(" %d",number[i]);
+
+   return 0;
 }
